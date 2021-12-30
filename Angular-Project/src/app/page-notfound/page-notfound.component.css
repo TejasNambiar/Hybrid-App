@@ -1,0 +1,22 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+div {
+  height: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 150px;
+}
+
+svg {
+  font-size: 200px;
+  line-height: 200px;
+  margin: 0;
+}
+p {
+  font-size: 50px;
+}

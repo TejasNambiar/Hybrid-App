@@ -1,0 +1,21 @@
+#form-box{
+    padding-top: 10px;
+}
+.margin-left mat-radio-button:not(:first-child){
+    margin-left:10px;
+}
+mat-card{
+    width: 95%;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+label{
+    font-size: 17px;
+    font-weight: 450;
+}
+#form-field{
+    padding-top: 20px;
+}
+mat-card-actions{
+    margin-left: 234px;
+}

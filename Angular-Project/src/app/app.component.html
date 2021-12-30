@@ -1,0 +1,24 @@
+<mat-toolbar>
+    <button mat-icon-button (click)="drawer.toggle()" mode="side">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span style="margin-left: 10px;">My Toolbar</span>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <mat-nav-list id="navlist-sidenav">
+        <a mat-list-item href="/">
+          <mat-icon>home</mat-icon><p id="icon">Home</p> 
+        </a>
+        <a mat-list-item routerLink="/profile/">
+          <mat-icon>account_circle</mat-icon><p id="icon">User Profile</p>
+        </a>
+        <a mat-list-item>
+          <mat-icon>settings</mat-icon><p id="icon">Settings</p> 
+        </a>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
