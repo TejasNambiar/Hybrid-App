@@ -6,7 +6,28 @@
          <form novalidate
                     (ngSubmit)="save()"
                     [formGroup]="customerForm">
-          
+
+                    <div class="form-group row mb-2" id="form-field">
+                      <label class="col-md-2 col-form-label"
+                             for="userName">User Name</label>
+                      <div class="col-md-8">
+                        <input class="form-control"
+                               id="userName"
+                               type="text"
+                               placeholder="User Name (required)"
+                               formControlName="userName"
+                               [ngClass]="{'is-invalid': (customerForm.get('userName').touched || customerForm.get('userName').dirty) && !customerForm.get('userName').valid }" />
+                        <span class="invalid-feedback">
+                          <span *ngIf="customerForm.get('userName').errors?.required">
+                            Please enter your User name.
+                          </span>
+                          <span *ngIf="customerForm.get('userName').errors?.minlength">
+                            The user name must be longer than 3 characters.
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                
                 <div class="form-group row mb-2" id="form-field">
                   <label class="col-md-2 col-form-label"
                          for="firstNameId">First Name</label>
@@ -96,10 +117,10 @@
                                  id="addressId"
                                  type="text"
                                  placeholder="Address"
-                                 formControlName="Address"
-                                 [ngClass]="{'is-invalid': (customerForm.get('Address').touched || customerForm.get('Address').dirty) && !customerForm.get('Address').valid }" />
+                                 formControlName="address"
+                                 [ngClass]="{'is-invalid': (customerForm.get('address').touched || customerForm.get('address').dirty) && !customerForm.get('address').valid }" />
                           <span class="invalid-feedback">
-                            <span *ngIf="customerForm.get('Address').errors?.required">
+                            <span *ngIf="customerForm.get('address').errors?.required">
                              Please enter address.
                             </span>
                           </span>

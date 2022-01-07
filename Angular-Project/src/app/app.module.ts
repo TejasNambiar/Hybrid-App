@@ -10,13 +10,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     ProfileComponent,
     PageNotfoundComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,

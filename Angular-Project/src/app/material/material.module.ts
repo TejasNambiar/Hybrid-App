@@ -12,8 +12,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const materialComponents =[
+  MatGridListModule,
   MatButtonModule,
   MatSidenavModule,
   MatIconModule,

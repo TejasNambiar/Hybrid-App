@@ -1,0 +1,193 @@
+<mat-card class="mat-elevation-z9">
+    <mat-card-header>
+        <mat-card-title >Signup Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="grid-container">
+            <div class="grid-item">
+                <form novalidate
+                    (ngSubmit)="save()"
+                    [formGroup]="customerForm">
+
+                    <div class="form-group row mb-2" id="form-field">
+                      <label class="col-md-3 col-form-label"
+                             for="userName">User Name</label>
+                      <div class="col-md-7">
+                        <input class="form-control"
+                               id="userName"
+                               type="text"
+                               placeholder="User Name (required)"
+                               formControlName="userName"
+                               [ngClass]="{'is-invalid': (customerForm.get('userName').touched || customerForm.get('userName').dirty) && !customerForm.get('userName').valid }" />
+                        <span class="invalid-feedback">
+                          <span *ngIf="customerForm.get('userName').errors?.required">
+                            Please enter your User name.
+                          </span>
+                          <span *ngIf="customerForm.get('userName').errors?.minlength">
+                            The user name must be longer than 3 characters.
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                
+                <div class="form-group row mb-2" id="form-field">
+                  <label class="col-md-3 col-form-label"
+                         for="firstNameId">First Name</label>
+                  <div class="col-md-7">
+                    <input class="form-control"
+                           id="firstNameId"
+                           type="text"
+                           placeholder="First Name (required)"
+                           formControlName="firstName"
+                           [ngClass]="{'is-invalid': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid }" />
+                    <span class="invalid-feedback">
+                      <span *ngIf="customerForm.get('firstName').errors?.required">
+                        Please enter your first name.
+                      </span>
+                      <span *ngIf="customerForm.get('firstName').errors?.minlength">
+                        The first name must be longer than 3 characters.
+                      </span>
+                    </span>
+                  </div>
+                </div>
+          
+                <div class="form-group row mb-2" id="form-field">
+                  <label class="col-md-3 col-form-label"
+                         for="lastNameId">Last Name</label>
+                  <div class="col-md-7">
+                    <input class="form-control"
+                           id="lastNameId"
+                           type="text"
+                           placeholder="Last Name (required)"
+                           formControlName = "lastName"
+                           [ngClass]="{'is-invalid': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid }" />
+                    <span class="invalid-feedback">
+                      <span *ngIf="customerForm.get('lastName').errors?.required">
+                        Please enter your last name.
+                      </span>
+                      <span *ngIf="customerForm.get('lastName').errors?.maxlength">
+                        The last name must be less than 50 characters.
+                      </span>
+                    </span>
+                  </div>
+                </div>
+          
+                <div class="form-group row mb-2" id="form-field">
+                    <label class="col-md-3 col-form-label" 
+                              for="addressId">address</label>
+                    <div class="col-md-7">
+                          <textarea class="form-control"
+                                 id="addressId"
+                                 type="text"
+                                 placeholder="address"
+                                 formControlName="address"
+                                 [ngClass]="{'is-invalid': (customerForm.get('address').touched || customerForm.get('address').dirty) && !customerForm.get('address').valid }" ></textarea>
+                          <span class="invalid-feedback">
+                            <span *ngIf="customerForm.get('address').errors?.required">
+                             Please enter address.
+                            </span>
+                          </span>
+                    </div>
+                </div>
+         
+              </form>
+            </div>
+            <div class="grid-item">
+                <form novalidate
+                    (ngSubmit)="save()"
+                        [formGroup]="customerForm">
+                    
+                        <div class="form-group row mb-2" id="form-field">
+                            <label class="col-md-3 col-form-label"
+                                   for="emailId">Email</label>
+                            <div class="col-md-7">
+                              <input class="form-control"
+                                     id="emailId"
+                                     type="email"
+                                     placeholder="Email (required)"
+                                     formControlName="email"
+                                     [ngClass]="{'is-invalid': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid }" />
+                              <span class="invalid-feedback">
+                                <span *ngIf="customerForm.get('email').errors?.required">
+                                  Please enter your email address.
+                                </span>
+                                <span *ngIf="customerForm.get('email').errors?.email">
+                                  Please enter a valid email address.
+                                </span>
+                              </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-2" id="form-field">
+                            <label class="col-md-3 col-form-label" 
+                                      for="phoneId">Phone</label>
+                            <div class="col-md-7">
+                                  <input class="form-control"
+                                         id="phoneId"
+                                         type="tel" 
+                                         placeholder="Phone"
+                                         formControlName="phone"
+                                         [ngClass]="{'is-invalid': (customerForm.get('phone').touched || customerForm.get('phone').dirty) && !customerForm.get('phone').valid }" />
+                                  <span class="invalid-feedback">
+                                    <span *ngIf="customerForm.get('phone').errors?.required">
+                                     Please enter your phone number.
+                                    </span>
+                                  </span>
+                            </div>
+                        </div>
+                          
+                        <div class="form-group row mb-2" id="form-field">
+                            <label class="col-md-3 col-form-label pt-0">Notification</label>
+                            <div class="col-md-7">
+                              <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" 
+                                          type="radio"
+                                          value="email"
+                                          formControlName="notification"
+                                          (click)="setNotification('email')">email
+                                </label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" 
+                                          type="radio"
+                                          value="text"
+                                          formControlName="notification"
+                                          (click)="setNotification('text')">Text
+                                </label>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-2" id="form-field">
+                            <label class="col-md-3 col-form-label" 
+                                      for="ratingId">DOB</label>
+                            <div class="col-md-7">
+                              <input formControlName='DOB'
+                               [matDatepicker]="datepicker">
+                              <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                              <mat-datepicker #datepicker>
+                                <mat-datepicker-actions>
+                                  <button mat-button matDatepickerCancel>Cancel</button>
+                                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                                </mat-datepicker-actions>
+                              </mat-datepicker>
+                            </div>
+                          </div>
+                </form>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button 
+                class="btn btn-primary mr-3"
+                type="submit"
+                style="width:80px"
+                [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                [disabled]="!customerForm.valid"
+                (click)="addProfile()">
+              Submit
+         </button>
+    </mat-card-actions>
+</mat-card>

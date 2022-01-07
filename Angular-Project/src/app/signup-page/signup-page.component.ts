@@ -1,32 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, ValidatorFn, AbstractControl, FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { ProfileService } from '../services/profile.service';
 
-function ratingRange(min: number, max:number): ValidatorFn{
-  return (c: AbstractControl): {[key: string]:boolean} | null => {
-  if(c.value !== null && (isNaN(c.value) || c.value <min || c.value >max))
-    return {'range' :true};
-  return null;
-}
-}
-
 @Component({
-  selector: 'app-profile-edit',
-  templateUrl: './profile-edit.component.html',
-  styleUrls: ['./profile-edit.component.css']
+  selector: 'app-signup-page',
+  templateUrl: './signup-page.component.html',
+  styleUrls: ['./signup-page.component.css']
 })
-export class ProfileEditComponent implements OnInit {
-  
+export class SignupPageComponent implements OnInit {
+
   tempArray: Array<any> = []
+  tempArray2: Array<any> = []
   customerForm: FormGroup | any;
 
-  constructor(private profile: ProfileService, private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    
-    this.profile.getProfileDetail()
-          .subscribe(data => this.tempArray = data);
-    console.log("temparr: "+this.tempArray)
+
+    this.profileService.getProfileDetail()
+                       .subscribe( data =>{
+                          this.tempArray2 = data
+                          
+    console.log("inside ts file: tempArray2: "+data)
+                       })   
+    console.log("inside ts file: tempArray2: "+this.tempArray2) 
 
     this.customerForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -39,7 +36,20 @@ export class ProfileEditComponent implements OnInit {
       DOB: [null, Validators.required],
       sendCatalog: true
     });
-    
+
+  }
+
+  addProfile(){
+    this.profileService
+        .addProfileDetails(this.customerForm.value)
+        .subscribe( (profile : any) =>{
+          console.log("data added successfully")
+          this.tempArray2 = profile
+          console.log(this.tempArray2)
+        }, (err) =>{
+          console.log("error => "+JSON.stringify(err.error.userName))
+
+        })
   }
 
   setNotification(notifyVia: string):void{
@@ -58,14 +68,4 @@ export class ProfileEditComponent implements OnInit {
     console.log(this.customerForm.form);
     console.log('Saved: ' + JSON.stringify(this.customerForm.value));
   }  
-
-  loadApiData(){
-    this.customerForm.patchValue({
-      firstName: this.tempArray[0].firstName,
-      lastName: this.tempArray[0].lastName,
-      address:this.tempArray[0].address,
-      email:this.tempArray[0].email
-    })  
-  }
 }
-

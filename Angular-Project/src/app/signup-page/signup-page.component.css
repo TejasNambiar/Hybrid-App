@@ -1,0 +1,36 @@
+mat-card{
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 10px;
+    font-weight: 150;
+}
+mat-card-header{
+  margin-left: 37%;
+  padding-top: 3%;
+}
+mat-card-header mat-card-title{
+  font-weight: 150;
+  font-size: 40px;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    padding: 10px;
+  }
+  .grid-item {
+    padding: 15px;
+    font-size: 25px;
+    text-align: left;
+  }
+  #form-field{
+    padding-top: 20px;
+}
+mat-card-actions{
+    margin-left: 215px;
+}
+
+button{
+    font-size: 15px;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
